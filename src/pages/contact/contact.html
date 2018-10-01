@@ -1,17 +1,55 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Editar datos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+  <ion-list >
+     <ion-item>
+      <ion-label>Cacular tu sueldo por horas</ion-label>
+      <ion-toggle [(ngModel)]="calcularSueldo" checked="false"></ion-toggle>
     </ion-item>
+    <form [formGroup]="simple" (ngSubmit)="enviarFormulario()" *ngIf="!calcularSueldo">
+      <ion-item>
+        <ion-label stacked>¿Cuanto ganas cada hora?</ion-label>
+        <ion-input type="text"  formControlName="dineroHora" name="dineroHora"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>¿Cuantas horas trabajas?</ion-label>
+        <ion-input type="text"  formControlName="horas" name="horas"></ion-input>
+      </ion-item>
+      <button type="submit" ion-button full outline [disabled]="simple.status != 'VALID'">Aceptar</button>
+    </form>
+
+
+    <ion-grid *ngIf="calcularSueldo" >
+      <form [formGroup]="calcular" (ngSubmit)="calcularSueldoHoras()">
+
+        <ion-row>
+          <ion-col col-12> 
+            <ion-input formControlName="neto" type="number" placeholder="Sueldo neto mensual"></ion-input><br>
+
+          </ion-col>
+          <ion-col col-12> 
+            <ion-input formControlName="dias" type="number" max="31" placeholder="Días trabajados"></ion-input><br>
+
+          </ion-col>
+          <ion-col col-12> 
+            <ion-input formControlName="horasDia" type="number" max="24" placeholder="Horas por día"></ion-input><br>
+
+          </ion-col>
+
+        </ion-row>
+        <button type="submit" ion-button full outline [disabled]="calcular.status != 'VALID'">Calcular sueldo por horas</button>
+      </form>
+    </ion-grid>
+
+
+
   </ion-list>
+
 </ion-content>

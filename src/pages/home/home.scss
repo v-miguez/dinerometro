@@ -1,3 +1,55 @@
 page-home {
 
+	.tiempo{
+		text-align: center;
+		font-family: Domine;
+		.texto{
+			font-size: 20px;
+		}
+		.horas{
+			font-size: 65px;
+			font-family: Roboto;
+			font-weight: bold;
+			margin-top: -20px;
+
+		}
+		.minutos{
+			font-size: 50px;
+			margin-top: -50px;
+			font-family: Roboto;
+			font-weight: bold;
+		}
+		.terminado{
+			font-size: 20px;
+			margin-top: -20px;
+		}
+	}
+	hr {
+		margin-top: -20px;
+		border: 0 !important;
+		height: 1px !important;
+		width: 100% !important;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+		
+	}	
+	.dinero{
+		text-align: center;
+		font-family: Domine;
+		.texto{
+			font-size: 20px;
+		}
+		.dinero{
+			font-size: 65px;
+			font-family: Roboto;
+			font-weight: bold;
+			margin-top: -20px;
+			color: #97e12b;
+		}
+		.texto2{
+			font-size: 20px;
+			margin-top: -50px;
+		}
+		
+	}
+
 }
