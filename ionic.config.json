@@ -1,0 +1,7 @@
+{
+  "name": "dinerometro",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
