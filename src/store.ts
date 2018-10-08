@@ -1,23 +1,26 @@
 import { tassign } from 'tassign'
 
-export interface IAppState{
+export interface IAppState {
 
-	token: string
-	alias: string
+	netoHoras: number
+	
 }
 
 
 export const INITIAL_STATE: IAppState = {
 
-	token: '',
-	alias: ''
+	netoHoras: 10
 }
 
 
 export function rootReducer(state, action){
 
 	switch (action.type) {
-		
+		case "GUARDAR_NETO": 
+		 return tassign(state, action.data)
 
 
 	}
+
+	return state
+}

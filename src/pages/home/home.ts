@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { NgRedux } from '@angular-redux/store'
+import { IAppState } from '../..//store.ts'
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
@@ -13,14 +14,13 @@ export class HomePage {
 	dinero: number
 	dineroHora: number
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController, private ngRedux: NgRedux<IAppState>) {
 
 		this.horas = 3
 		this.minutos = 59
 		this.terminado = false
 		this.dinero = 0
-		this.dineroHora= 10
-
+		this.dineroHora= ngRedux.getState().netoHoras
 		setInterval(()=>{
 
 			if(this.minutos == 0 ){

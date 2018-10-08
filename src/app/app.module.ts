@@ -11,30 +11,43 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { NgReduxModule, NgRedux, DevToolsExtension} from '@angular-redux/store'
+import { IAppState, rootReducer, INITIAL_STATE } from '../store'
+
+
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+  MyApp,
+  AboutPage,
+  ContactPage,
+  HomePage,
+  TabsPage
   ],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
+  BrowserModule,
+  IonicModule.forRoot(MyApp),
+  NgReduxModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+  MyApp,
+  AboutPage,
+  ContactPage,
+  HomePage,
+  TabsPage
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  StatusBar,
+  SplashScreen,
+  {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor( ngredux:NgRedux<IAppState>){
+
+// El segundo parámetro es el estado inicial de nuestra store
+ngredux.configureStore(rootReducer,INITIAL_STATE)
+}
+
+}
