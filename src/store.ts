@@ -2,16 +2,16 @@ import { tassign } from 'tassign'
 
 export interface IAppState{
 
-	token: string
-	alias: string
+	dinero: number
+	hora: number
 }
 
 
-export const INITIAL_STATE: IAppState = {
+// export const INITIAL_STATE: IAppState = {
 
-	token: '',
-	alias: ''
-}
+// 	// this.dinero = 0,
+// 	// hora = 0
+// }
 
 
 export function rootReducer(state, action){
@@ -21,3 +21,4 @@ export function rootReducer(state, action){
 
 
 	}
+}
