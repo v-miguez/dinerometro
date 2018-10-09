@@ -13,7 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { NgReduxModule, NgRedux, DevToolsExtension} from '@angular-redux/store'
 import { IAppState, rootReducer, INITIAL_STATE } from '../store'
-
+import { isDevMode }from'@angular/core';
 
 @NgModule({
   declarations: [
@@ -44,10 +44,38 @@ import { IAppState, rootReducer, INITIAL_STATE } from '../store'
 })
 export class AppModule {
 
-  constructor( ngredux:NgRedux<IAppState>){
+  constructor( ngredux:NgRedux<IAppState>, devTools:DevToolsExtension){
+    var enhancers = isDevMode() ? [devTools.enhancer()] :[]
 
-// El segundo parámetro es el estado inicial de nuestra store
-ngredux.configureStore(rootReducer,INITIAL_STATE)
+
+    let estado_inicial = null
+
+    if (localStorage.getItem('redux_data')) {
+      estado_inicial = JSON.parse(localStorage.getItem('redux_data'))
+    } else {
+      estado_inicial = INITIAL_STATE
+    }
+
+    // El segundo parámetro es el estado inicial de nuestra store
+    ngredux.configureStore(rootReducer, estado_inicial,[],enhancers)
+  }
+
 }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

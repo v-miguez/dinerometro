@@ -4,7 +4,12 @@
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content padding>
+<button ion-button full (click)='empezarCuenta()' *ngIf="funcionando<1">Empezar!</button>
+<button ion-button full (click)='empezarCuenta()' *ngIf="funcionando>=1">Cancelar</button>
+
   <ion-grid>
     <ion-row>
       <ion-col col-1>
@@ -30,7 +35,7 @@
       </ion-col>
       <ion-col col-10 class="dinero">
         <p class="texto">Llevas</p>
-        <p class="dinero">{{dinero}} €</p>
+        <p class="dinero">{{total}} €</p>
         <p class="texto2">Genial!</p>
 
       </ion-col>
